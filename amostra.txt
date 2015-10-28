@@ -1,0 +1,102 @@
+Abaixo está os passos que seguimos para testar nosso projeto:
+
+
+
+Primeiro rodamos o webservice, e depois os comandos do ATM.
+
+
+
+Mostraremos primeiro as entradas e saídas da ATM, pois fica mais fácil de visualizar,
+depois, o log do webservice.
+
+
+
+=== ATM ===
+
+    
+    pedro@syspedro:proj_dist$ python ATM.py 127.0.0.1 8542 saldo 1
+
+    O saldo atual do usuario 1 e RS 1000
+
+    pedro@syspedro:proj_dist$ python ATM.py 127.0.0.1 8542 deposito 1 500
+
+    Deposito bem sucedido de RS 500 na conta 1!
+
+    pedro@syspedro:proj_dist$ python ATM.py 127.0.0.1 8542 saldo 1 500
+
+    O saldo atual do usuario 1 e RS 1500
+
+    pedro@syspedro:proj_dist$ python ATM.py 127.0.0.1 8542 saque 1 200
+
+    Saque bem sucedido de RS 200 na conta 1!
+
+    pedro@syspedro:proj_dist$ python ATM.py 127.0.0.1 8542 saldo 1
+
+    O saldo atual do usuario 1 e RS 1300
+
+    pedro@syspedro:proj_dist$ python ATM.py 127.0.0.1 8542 saldo 4
+
+    O saldo atual do usuario 4 e RS 1000
+
+    pedro@syspedro:proj_dist$ python ATM.py 127.0.0.1 8542 deposito 4 100
+
+    Deposito bem sucedido de RS 100 na conta 4!
+
+    pedro@syspedro:proj_dist$ python ATM.py 127.0.0.1 8542 saldo 4
+
+    O saldo atual do usuario 4 e RS 1100
+
+    pedro@syspedro:proj_dist$ python ATM.py 127.0.0.1 8542 saque 4 50
+
+    Saque bem sucedido de RS 50 na conta 4!
+
+    pedro@syspedro:proj_dist$ python ATM.py 127.0.0.1 8542 saldo 4
+
+    O saldo atual do usuario 4 e RS 1050
+
+    pedro@syspedro:proj_dist$ python ATM.py 127.0.0.1 8542 transferencia 4 1 400
+
+    Transferencia bem sucedida de RS 400 da conta 4 para a conta 1!
+
+    pedro@syspedro:proj_dist$ python ATM.py 127.0.0.1 8542 saldo 1
+
+    O saldo atual do usuario 1 e RS 1700
+
+    pedro@syspedro:proj_dist$ python ATM.py 127.0.0.1 8542 saldo 4
+
+    O saldo atual do usuario 4 e RS 650
+
+
+=== WEBSERVICE ===
+
+
+    pedro@syspedro:proj_dist$ python Banco.py 8542
+
+    http://127.0.0.1:8542/
+
+    127.0.0.1:50184 - - [04/Oct/2015 17:44:43] "HTTP/1.1 GET /saldo/1" - 200 OK
+
+    127.0.0.1:50186 - - [04/Oct/2015 17:44:51] "HTTP/1.1 GET /deposito/1/500" - 200 OK
+
+    127.0.0.1:50188 - - [04/Oct/2015 17:44:56] "HTTP/1.1 GET /saldo/1" - 200 OK
+
+    127.0.0.1:50190 - - [04/Oct/2015 17:45:03] "HTTP/1.1 GET /saque/1/200" - 200 OK
+
+    127.0.0.1:50192 - - [04/Oct/2015 17:45:14] "HTTP/1.1 GET /saldo/1" - 200 OK
+
+    127.0.0.1:50193 - - [04/Oct/2015 17:45:19] "HTTP/1.1 GET /saldo/4" - 200 OK
+
+    127.0.0.1:50195 - - [04/Oct/2015 17:45:23] "HTTP/1.1 GET /deposito/4/100" - 200 OK
+
+    127.0.0.1:50196 - - [04/Oct/2015 17:45:29] "HTTP/1.1 GET /saldo/4" - 200 OK
+
+    127.0.0.1:50198 - - [04/Oct/2015 17:45:33] "HTTP/1.1 GET /saque/4/50" - 200 OK
+
+    127.0.0.1:50199 - - [04/Oct/2015 17:45:38] "HTTP/1.1 GET /saldo/4" - 200 OK
+
+    127.0.0.1:50291 - - [04/Oct/2015 17:47:29] "HTTP/1.1 GET /transferencia/4/1/400" - 200 OK
+
+    127.0.0.1:50293 - - [04/Oct/2015 17:47:37] "HTTP/1.1 GET /saldo/1" - 200 OK
+
+    127.0.0.1:50294 - - [04/Oct/2015 17:47:38] "HTTP/1.1 GET /saldo/4" - 200 OK
+

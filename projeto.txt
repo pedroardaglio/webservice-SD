@@ -1,0 +1,41 @@
+A ideia geral do projeto é criarmos um sistema de Banco (com contas) e ATM, envolvendo
+
+persistência de dados (banco de dados) e distribuí-lo em várias instâncias, para simularmos
+
+e entendermos melhor a matéria de Sistemas Distribuídos.
+
+
+
+Programamos o sistema em 3 partes principais: Conta, Banco e ATM.
+
+O ATM é responsável por pegar a entrada do usuário e requisitar o serviço para o Webservice.
+
+O Webservice analisa o que foi requisitado. Caso exita o serviço requerido, executa-o chamando
+
+o método da classe Banco cujo nome é equivalente ao serviço requisitado.
+
+A classe Banco tem como função gerenciar as contas e seus saldos. Enquanto a classe Conta consiste
+
+apenas em getters/setters para serem usados por outras fontes.
+
+
+
+Decidimos por usar Python, pois é mais fácil configurar e programar, e porque o módulo que implementa
+
+RESTful é muito mais simples (mas tão potente quanto) os equivalentes em Java.
+
+
+
+Também decidimos não usar Interfaces em Python (por causa da filosofia que o Python segue), pois as
+
+mesmas não funcionam da mesma forma em Python do que em Java (pelo menos até o momento). Então apenas
+
+implementamos as classes e seus métodos, e a ATM verifica se o serviço desejado existe.
+
+
+
+O trecho de código que faz a papel de Webservice recebe a url, verifica por Regex, e manda para uma
+
+CLASSE em específico. Ou seja, serão uma classe pra cada "tipo" de URL. O mesmo estilo é usado em
+
+Django e Ruby on Rails, então não é invenção nossa, e sim do módulo web.py.
